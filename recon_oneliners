@@ -1,0 +1,1 @@
+curl -s https://certspotter.com/api/v0/certs\?domain\=$domain | grep dns_names | cut -d ':' -f2 | tr , '\n' | sed "s/\"//g" | sed "s/\[//g" | sed "s/\]//g" | sed '/^$/d'
