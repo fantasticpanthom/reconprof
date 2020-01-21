@@ -1,1 +1,2 @@
 curl -s https://certspotter.com/api/v0/certs\?domain\=$domain | grep dns_names | cut -d ':' -f2 | tr , '\n' | sed "s/\"//g" | sed "s/\[//g" | sed "s/\]//g" | sed '/^$/d' | sort -u
+curl -s https://crt.sh/\?q\=%.$domain\&output\=json | tr , '\n' | grep name_value | cut -d ":" -f2 | sed "s/\"//g" | grep -Eo "[a-zA-Z0-9./?=_-]*" | sed '/^$/d' | sort -u
